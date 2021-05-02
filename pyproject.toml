@@ -1,0 +1,8 @@
+[build-system]
+# Minimum requirements for the build system to execute.
+# https://setuptools.readthedocs.io/en/latest/userguide/quickstart.html
+# https://pip.pypa.io/en/stable/reference/pip/#pep-517-and-518-support
+requires = ["setuptools", "wheel", "setuptools_scm[toml]>=6.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
