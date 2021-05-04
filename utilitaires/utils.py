@@ -17,6 +17,10 @@ pd.options.io.excel.xlsx.writer = "openpyxl"  # pour xlsx_write_adjust
 
 
 def get_file(path: Path, geo: bool = False) -> Optional[DataFrame]:
+    """Lit une table dans un fichier en fonction de son extension.
+    
+    Formats pris en compte: parquet ou csv.
+    """
     suffix = path.suffix
     try:
         if suffix == ".parquet":
@@ -34,7 +38,10 @@ def get_file(path: Path, geo: bool = False) -> Optional[DataFrame]:
 
 
 def save_file(df: DataFrame, path: Path) -> None:
-    """Sauvegarde la table en fonction de l'extension de son fichier."""
+    """Sauvegarde la table en fonction de l'extension de son fichier.
+    
+    Formats pris en compte: parquet ou csv.
+    """
     suffix = path.suffix
     if suffix == ".parquet":
         df.to_parquet(path)
@@ -76,7 +83,7 @@ class Donnée:
             self.d = dfs if self.multiple else dfs[0]
 
     def cstr_base(self) -> Union[DataFrame, tuple[DataFrame, ...]]:
-        """Construit la base."""
+        """Construit la ou les base(s)."""
         pass
 
 
