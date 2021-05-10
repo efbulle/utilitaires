@@ -2,6 +2,22 @@ from pathlib import Path
 import unittest
 from unittest.mock import mock_open, patch
 import utilitaires.conf as conf
+import utilitaires.utils as utils
+from pandas import DataFrame
+
+
+class DonnéesTest(utils.Donnée):
+    filename = "test.parquet"
+
+    def cstr_base(self):
+        return DataFrame({"a": [2], "b": [4]})
+
+
+class TestUtils(unittest.TestCase):
+    def test_données(self):
+        d = DonnéesTest().d
+        self.assertEqual(d["a"].iloc[0], 2)
+        (DonnéesTest.save_path / DonnéesTest.filename).unlink()
 
 
 class TestConf(unittest.TestCase):
