@@ -31,7 +31,7 @@ def get_file(path: Path, geo: bool = False) -> Optional[DataFrame]:
         elif suffix == ".csv":
             return pd.read_csv(path)
         else:
-            raise NotImplementedError
+            raise NotImplementedError(f"{suffix} est un type de fichier non implémenté.")
     except FileNotFoundError:
         print(f"{path.name} n'existe pas.")
         return None
@@ -48,7 +48,7 @@ def save_file(df: DataFrame, path: Path) -> None:
     elif suffix == ".csv":
         df.to_csv(path)
     else:
-        raise NotImplementedError
+        raise NotImplementedError(f"{suffix} est un type de fichier non implémenté.")
 
 
 class Donnée:
@@ -62,7 +62,7 @@ class Donnée:
     Si filename est une liste, cstr_base() doit renvoyer un tuple qui est dans le même ordre.
     """
 
-    filename = None
+    filename = ""
     save_path = chemins["transformed"]
 
     def __init__(self, geo: bool = False) -> None:
