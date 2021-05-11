@@ -66,6 +66,7 @@ class Donnée:
     save_path = chemins["transformed"]
 
     def __init__(self, geo: bool = False) -> None:
+        """Charge la ou les table(s) ou construit et sauvegarde."""
         self.multiple = isinstance(self.filename, list)
         if not self.multiple:
             self.paths = [self.save_path / self.filename]
