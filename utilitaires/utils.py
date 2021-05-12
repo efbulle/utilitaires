@@ -66,7 +66,11 @@ class Donnée:
     save_path = chemins["transformed"]
 
     def __init__(self, geo: bool = False) -> None:
-        """Charge la ou les table(s) ou construit et sauvegarde."""
+        """Charge la ou les table(s) ou construit et sauvegarde.
+        
+        Args:
+            geo: si vrai, charge les fichiers parquet avec geopandas.
+        """
         self.multiple = isinstance(self.filename, list)
         if not self.multiple:
             self.paths = [self.save_path / self.filename]
