@@ -1,8 +1,10 @@
 """Configuration pour les autres modules.
 
-Pour l'instant, juste des chemins de repertoires.
-Lit 'projects.ini' situé dans le répertoire personnel 
-'chemins' contient un dict avec les répertoires utiles aux modules.
+Pour l'instant, juste des chemins de répertoires.
+Lit 'projects.ini' situé dans le répertoire personnel.
+
+Attributs:
+    chemins: dict avec les répertoires utiles aux modules.
 """
 
 from pathlib import Path
