@@ -57,7 +57,7 @@ class Donnée(abc.ABC):
     def cstr_base(self) -> DataFrame:
         """Construit la base."""
 
-    @abc.abstractmethod
+    @abc.abstractproperty
     def fichier_brut(self) -> DataFrame:
         """Fichier d'origine."""
 
@@ -69,7 +69,7 @@ def xlsx_write_adjust(
 
     Ajuste la largeur des colonnes et fige les volets.
     BestFit pour la largeur des colonnes ne fonctionne pas pour tous les types de données.
-    
+
     Arguments:
         writer: doit utiliser l'engine openpyxl
         table: table à sauver

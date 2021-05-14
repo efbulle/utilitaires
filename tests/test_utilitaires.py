@@ -14,6 +14,7 @@ class DonnéesTest(utils.Donnée):
     def cstr_base(self):
         return DataFrame({"a": [2], "b": [4]})
 
+    @property
     def fichier_brut(self) -> DataFrame:
         return 1
 
