@@ -98,7 +98,7 @@ def xlsx_write_adjust(
         len_name = (
             max(len(str(c)) for c in series.name) if is_multi else len(str(series.name))
         )
-        length_max = series.astype(str).map(len).max()
+        length_max = series.astype(str).dropna().map(len).max()
         if debug:
             print(series.name, length_max, len_name)
         max_len = max((length_max, len_name)) + 1  # adding a little extra space
