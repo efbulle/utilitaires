@@ -19,10 +19,7 @@ def lit_to_dec(pk_lit: Series) -> Series:
     dec = pk_lit.str.extract(REGEX_PK_DEC).astype({"add2": float})
     dec["add1"] = dec["add1"].replace(RER_C).astype(float)
     dec2 = (dec["add1"] * 1000).add(dec["add2"].where(dec["op"] == "+", -dec["add2"]))
-    try:  # à changer avec le nouveau type Int64 quand il sera stabilisé
-        return dec2.astype(int)
-    except ValueError:
-        return dec2.astype(float)
+    return dec2.astype("Int64")
 
 
 def interne_to_dec(pk_internes: Series) -> Series:

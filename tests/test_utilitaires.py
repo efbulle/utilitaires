@@ -3,9 +3,20 @@
 from pathlib import Path
 import unittest
 from unittest.mock import mock_open, patch
-from pandas import DataFrame
+from pandas import DataFrame, Series
+import pandas as pd
+from pandas.testing import assert_series_equal
 import utilitaires.conf as conf
 import utilitaires.utils as utils
+import utilitaires.pk as pk
+
+
+class TestPK(unittest.TestCase):
+    def test_pk1(self):
+        pkdec = pk.lit_to_dec(Series(["100+001", "200+100", "200-100", pd.NA]))
+        self.assertTrue(
+            pkdec.equals(Series([100001, 200100, 199900, pd.NA], dtype="Int64"))
+        )
 
 
 class DonnéesTest(utils.Donnée):
